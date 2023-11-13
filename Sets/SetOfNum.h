@@ -3,6 +3,7 @@
 
 class SetOfNum
 {
+private:
 	uint32_t* arr;
 	uint32_t sszz;
 public:
@@ -23,29 +24,27 @@ public:
 		delete[] arr;
 	}
 
-	bool has(uint32_t value, uint32_t limit = -1) const;
+	uint32_t has(uint32_t value, uint32_t limit = -1) const;
 
 	void show() const
 	{
 		for (size_t i = 0; i < sszz; i++)
 		{
-			std::cout << arr[i] << ", ";
+			std::cout << arr[i] << " ";
 		}
 	}
 
-	SetOfNum& operator+=(uint32_t value);
-
 	SetOfNum& operator+=(const SetOfNum& set);
+	SetOfNum& operator+(const SetOfNum& set);
 
+	SetOfNum& increment();
 	SetOfNum& operator++();
 	SetOfNum& operator++(int);
 
-	SetOfNum& increment();
+	SetOfNum& operator-=(uint32_t value);
 
-	static const SetOfNum add(const SetOfNum& set, uint32_t value);
-
+	SetOfNum& operator+=(uint32_t value);
 	friend const SetOfNum operator+(const SetOfNum& set, uint32_t value);
-	
 	friend const SetOfNum operator+(uint32_t value, const SetOfNum& set);
 
 };
