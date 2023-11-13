@@ -74,20 +74,25 @@ SetOfNum& SetOfNum::operator+=(const SetOfNum& set)
 	return *this;
 }
 
-SetOfNum& SetOfNum::operator+(const SetOfNum& set)
+const SetOfNum SetOfNum::operator+(const SetOfNum& set) const
 {
-	*this += set;
-	return *this;
+	SetOfNum temp = *this;
+	temp += set;
+	return temp;
 }
 
 SetOfNum& SetOfNum::operator++()
 {
-	return this->increment();
+	for (size_t i = 0; i < sszz; i++)
+	{
+		arr[i]++;
+	}
+	return *this;
 }
 
 SetOfNum& SetOfNum::operator++(int)
 {
-	return this->increment();
+	return (*this)++;
 }
 
 SetOfNum& SetOfNum::operator-=(uint32_t value)
@@ -118,14 +123,14 @@ SetOfNum& SetOfNum::operator-=(uint32_t value)
 	return *this;
 }
 
-SetOfNum& SetOfNum::increment()
+const SetOfNum SetOfNum::operator-(uint32_t value) const
 {
-	for (size_t i = 0; i < sszz; i++)
-	{
-		arr[i]++;
-	}
-	return *this;
+	SetOfNum temp = *this;
+	temp -= value;
+	return temp;
 }
+
+
 
 const SetOfNum operator+(const SetOfNum& set, uint32_t value)
 {

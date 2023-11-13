@@ -35,17 +35,16 @@ public:
 	}
 
 	SetOfNum& operator+=(const SetOfNum& set);
-	SetOfNum& operator+(const SetOfNum& set);
+	const SetOfNum operator+(const SetOfNum& set) const;
 
-	SetOfNum& increment();
 	SetOfNum& operator++();
 	SetOfNum& operator++(int);
 
 	SetOfNum& operator-=(uint32_t value);
+	const SetOfNum operator-(uint32_t value) const;
 
 	SetOfNum& operator+=(uint32_t value);
 	friend const SetOfNum operator+(const SetOfNum& set, uint32_t value);
 	friend const SetOfNum operator+(uint32_t value, const SetOfNum& set);
-
 };
 

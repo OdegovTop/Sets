@@ -42,6 +42,12 @@ int main()
 	zx.show();
 	std::cout << std::endl;
 
+	SetOfNum yz = zx - 200;
+	zx.show();
+	std::cout << std::endl;
+	yz.show();
+	std::cout << std::endl;
+
 	return 0;
 }
   
