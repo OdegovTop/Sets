@@ -92,7 +92,7 @@ SetOfNum& SetOfNum::operator++()
 
 SetOfNum& SetOfNum::operator++(int)
 {
-	return (*this)++;
+	return this->operator++();
 }
 
 SetOfNum& SetOfNum::operator-=(uint32_t value)
