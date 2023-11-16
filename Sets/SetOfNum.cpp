@@ -90,7 +90,22 @@ SetOfNum& SetOfNum::operator++()
 	return *this;
 }
 
-SetOfNum& SetOfNum::operator++(int)
+const SetOfNum SetOfNum::operator++(int)
+{
+	SetOfNum set{ *this };
+	this->operator++();
+	return set;
+}
+SetOfNum& SetOfNum::operator--()
+{
+	for (size_t i = 0; i < sszz; i++)
+	{
+		arr[i]--;
+	}
+	return *this;
+}
+
+const SetOfNum SetOfNum::operator--(int)
 {
 	return this->operator++();
 }
@@ -130,8 +145,6 @@ const SetOfNum SetOfNum::operator-(uint32_t value) const
 	return temp;
 }
 
-
-
 const SetOfNum operator+(const SetOfNum& set, uint32_t value)
 {
 	if (set.has(value) == -1)
@@ -149,6 +162,35 @@ const SetOfNum operator+(uint32_t value, const SetOfNum& set)
 	return set + value;
 }
 
+ostream& operator<<(ostream& out, const SetOfNum& set)
+{
+	out << "{";
+	for (size_t i = 0; i < set.sszz; i++)
+	{
+		out << " " << set.arr[i];
+	}
+	out << " }";
+	return out;
+}
+
+istream& operator>>(istream& input, SetOfNum& set)
+{
+	cout << "Укажите размер множества:";
+	input >> set.sszz;
+	input.ignore(1);
+
+	delete[]set.arr;
+	set.arr = new uint32_t[set.sszz];
+
+
+	for (size_t i = 0; i < set.sszz; i++)
+	{
+		cout << "Укажите значение индекса " << i << ": ";
+		input >> set.arr[i];
+		input.ignore(1);
+	}
+	return input;
+}
 
 
 
